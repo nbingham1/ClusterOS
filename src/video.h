@@ -6,10 +6,10 @@ class video
 	public:
 		video();
 		~video();
-	
+
 		void clear();
 		void writestr(char *cp);
-		void writenum(unsigned long long int n, int base);
+		void writenum(int n, int base);
 		void writeaddr(unsigned long long int n);
 		void put(char c);
 		void newln();

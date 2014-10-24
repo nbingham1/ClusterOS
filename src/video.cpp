@@ -30,12 +30,18 @@ void video::writestr(char *cp)
 		put(*ch);
 }
 
-void video::writenum(unsigned long long int n, int base)
+void video::writenum(int n, int base)
 {
-	unsigned int num = n;
-	unsigned int temp;
-	unsigned int div = 1;
-	unsigned int levels = 0;
+	if (n == 0)
+	{
+		put('0');
+		return;
+	}
+
+	int num = n < 0 ? -n : n;
+	int temp;
+	int div = 1;
+	int levels = 0;
 	while (num/div > 0)
 	{
 		div *= base;
@@ -43,6 +49,8 @@ void video::writenum(unsigned long long int n, int base)
 	}
 
 	div /= base;
+	if (n < 0)
+		put('-');
 
 	while (div >= 1)
 	{
