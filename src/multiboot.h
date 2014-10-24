@@ -1,3 +1,5 @@
+#include "common.h"
+
 #ifndef multiboot_h
 #define multiboot_h
 
@@ -23,64 +25,64 @@
 
 struct multiboot_header_t
 {
-	unsigned long magic;
-	unsigned long flags;
-	unsigned long checksum;
-	unsigned long header_addr;
-	unsigned long load_addr;
-	unsigned long load_end_addr;
-	unsigned long bss_end_addr;
-	unsigned long entry_addr;
+	uint32 magic;
+	uint32 flags;
+	uint32 checksum;
+	uint32 header_addr;
+	uint32 load_addr;
+	uint32 load_end_addr;
+	uint32 bss_end_addr;
+	uint32 entry_addr;
 };
 
 struct aout_symbol_table_t
 {
-	unsigned long tabsize;
-	unsigned long strsize;
-	unsigned long addr;
-	unsigned long reserved;
+	uint32 tabsize;
+	uint32 strsize;
+	uint32 addr;
+	uint32 reserved;
 };
 
 struct elf_section_header_table_t
 {
-	unsigned long num;
-	unsigned long size;
-	unsigned long addr;
-	unsigned long shndx;
+	uint32 num;
+	uint32 size;
+	uint32 addr;
+	uint32 shndx;
 };
 
 struct multiboot_info_t
 {
-	unsigned long flags;
-	unsigned long mem_lower;
-	unsigned long mem_upper;
-	unsigned long boot_device;
-	unsigned long cmdline;
-	unsigned long mods_count;
-	unsigned long mods_addr;
+	uint32 flags;
+	uint32 mem_lower;
+	uint32 mem_upper;
+	uint32 boot_device;
+	uint32 cmdline;
+	uint32 mods_count;
+	uint32 mods_addr;
 	union
 	{
 		aout_symbol_table_t aout_sym;
 		elf_section_header_table_t elf_sec;
 	} u;
-	unsigned long mmap_length;
-	unsigned long mmap_addr;
+	uint32 mmap_length;
+	uint32 mmap_addr;
 };
 
 struct module_t
 {
-	unsigned long mod_start;
-	unsigned long mod_end;
-	unsigned long string;
-	unsigned long reserved;
+	uint32 mod_start;
+	uint32 mod_end;
+	uint32 string;
+	uint32 reserved;
 };
 
 struct memory_map_t
 {
-	unsigned long size;
-	unsigned long long int base_addr;
-	unsigned long long int length;
-	unsigned long type;
+	uint32 size;
+	uint64 base_addr;
+	uint64 length;
+	uint32 type;
 };
 
 #endif
